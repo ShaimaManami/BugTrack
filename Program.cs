@@ -1,15 +1,23 @@
 using BugTrack.Models;
 using Microsoft.CodeAnalysis.Options;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using BugTrack.Data;
+using BugTrack.Areas.Identity.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 //DI
-
-builder.Services.AddDbContext<ApplicationDbContext>(options => 
+builder.Services.AddDbContext<BugTrack.Models.ApplicationDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DevConnection")));
+
+builder.Services.AddDbContext<BugTrack.Data.ApplicationDataBContext>(options => 
+options.UseSqlServer(builder.Configuration.GetConnectionString("DevConnection")));
+
+builder.Services.AddDefaultIdentity<BugTrack.Areas.Identity.Data.BugTrackUser>(options => options.SignIn.RequireConfirmedAccount = false)
+    .AddEntityFrameworkStores<BugTrack.Data.ApplicationDataBContext>();
 
 var app = builder.Build();
 //Register Syncfusion license
@@ -27,11 +35,14 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseAuthentication();;
 
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Kanban}/{action=Index}/{id?}");
+
+app.MapRazorPages();
 
 app.Run();
