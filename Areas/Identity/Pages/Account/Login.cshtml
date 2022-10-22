@@ -1,0 +1,68 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+
+
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="widget p-5" style="background-color:#212b36">
+        <section>
+                <h2 class="fw-bold">@ViewData["Title"]</h2>
+            <form id="account" method="post">
+                
+                <div asp-validation-summary="ModelOnly" class="text-danger fs-6"></div>
+                <div class="form-floating">
+                    <ejs-textbox id="email" placeholder="Email" ejs-for="Input.Email"
+                                 autocomplete="Email" floatLabelType="Always"></ejs-textbox>
+                    
+                    <span asp-validation-for="Input.Email" class="text-danger fs-6"></span>
+                </div>
+                <div class="form-floating">
+                    <ejs-textbox id="password" placeholder="Password" ejs-for="Input.Password"
+                    autocomplete="current-password" floatLabelType="Always"></ejs-textbox>
+
+                    <span asp-validation-for="Input.Password" class="text-danger fs-6"></span>
+                </div>
+                <div>
+                    <div class="checkbox">
+                            <ejs-checkbox id="default" label="Remember me?" class="btn"  ejs-for="Input.RememberMe">
+                                
+                            </ejs-checkbox>
+                       
+                    </div>
+                </div>
+                <div>
+
+                   <ejs-button id="submit" type="submit" cssClass="e-success" content="Login"></ejs-button>
+
+                    
+                </div>
+                
+                <div>
+                    
+                    <p>
+                        <a asp-page="./Register" class="e-btn " style="margin-top:10px"
+                        asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+                    </p>
+                   
+                </div>
+            </form>
+        </section>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <div class="widget h-100 d-flex justify-content-center align-items-center">
+            <i class="fa-solid fa-bug fa-2xl">
+
+            </i>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

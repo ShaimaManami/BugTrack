@@ -1,0 +1,68 @@
+﻿@model BugTrack.Models.Track
+
+
+@{
+    ViewData["PageTitle"] = Model.TrackId == 0 ? "Create a new track" : "Edit track";
+ 
+
+}
+
+
+<div class="row"  >
+    <div class="col-md-7" >
+        <div class="widget p-5" style="background-color:#212b36">
+            <form asp-action="AddOrEdit" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" name="TrackId" value="@Model.TrackId" />
+                <input type="hidden" name="Date" value="@DateTime.Now" />
+                 
+                
+                <div class="mb-3">
+                    <ejs-dropdownlist id="ddlCategory" ejs-for="BugCategoryId"
+                                      dataSource="@ViewBag.Categories" placeholder="Bugs"
+                                      floatLabelType="Always" allowFiltering="true" ignoreAccent="true"
+                                      filterType="Contains" popupHeight="220px">
+                        <e-dropdownlist-fields value="BugCategoryId" text="TitleWithIcon"></e-dropdownlist-fields>
+                    </ejs-dropdownlist>
+                    <span asp-validation-for="BugCategoryId" class="text-danger fs-6"></span>
+                </div>
+               
+                <div class="mb-3">
+                    <ejs-textbox id="note" placeholder="Note" ejs-for="Note"
+                                 floatLabelType="Always" multiline="true"></ejs-textbox>
+                    <span asp-validation-for="Note" class="text-danger fs-6"></span>
+                </div>
+                <div class="mb-3">
+                    <ejs-textbox id="Description" placeholder="Description" ejs-for="Description"
+                                 floatLabelType="Always" multiline="true"></ejs-textbox>
+                    <span asp-validation-for="Description" class="text-danger fs-6"></span>
+                </div>
+                
+                <ejs-button id="submit" type="submit" content="Submit" cssClass="e-success"></ejs-button>
+                
+            </form>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <div class="widget h-100 d-flex justify-content-center align-items-center">
+            <i class="fa-solid fa-cube fa-2xl"></i>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts
+    {
+    
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+    <script>
+        $(function () {
+            $('#datepicker').datepicker({
+               dateFormat: 'dd/mm/yy'
+                 });
+        });
+    </script>
+    }

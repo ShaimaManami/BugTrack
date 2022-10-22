@@ -1,0 +1,73 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="widget p-5" style="background-color:#212b36">
+
+            <h2 class="fw-bold">@ViewData["Title"]</h2>
+
+            <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-floating">
+                    <ejs-textbox id="firstname" placeholder="Firstname" ejs-for="Input.UserFirstname"
+                                 autocomplete="firstname" floatLabelType="Always"></ejs-textbox>
+
+                    <span asp-validation-for="Input.UserFirstname" class="text-danger fs-6"></span>
+                </div>
+                <div class="form-floating">
+                    <ejs-textbox id="lastname" placeholder="Lastname" ejs-for="Input.UserLastname"
+                                 autocomplete="lasstname" floatLabelType="Always"></ejs-textbox>
+
+                    <span asp-validation-for="Input.UserLastname" class="text-danger fs-6"></span>
+                </div>
+                <div class="form-floating">
+                    <ejs-textbox id="email" placeholder="Email" ejs-for="Input.Email"
+                                 autocomplete="Email" floatLabelType="Always"></ejs-textbox>
+
+                    <span asp-validation-for="Input.Email" class="text-danger fs-6"></span>
+                </div>
+                <div class="form-floating">
+                    <ejs-textbox ejs-for="Input.Password" placeholder="New password"
+                     floatLabelType="Always"></ejs-textbox>
+
+                    <span asp-validation-for="Input.Password" class="text-danger fs-6"></span>
+                </div>
+                <div class="form-floating">
+                    <ejs-textbox ejs-for="Input.ConfirmPassword" placeholder="Confirm new password"
+                                 floatLabelType="Always"></ejs-textbox>
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger fs-6"></span>
+                </div>
+
+                <div class="form-floating">
+                    <ejs-button id="registerSubmit" type="submit" class="w-50 btn btn-lg "
+                    style="margin-top:10px"cssClass="e-success"
+                                content="Register"></ejs-button>
+
+
+                </div>
+            </form>
+
+        </div>
+            
+        </div>
+
+    
+    <div class="col-md-5">
+        <div class="widget h-100 d-flex justify-content-center align-items-center">
+            <i class="fa-solid fa-bug fa-2xl">
+
+            </i>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
