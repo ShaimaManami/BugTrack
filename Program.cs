@@ -21,7 +21,7 @@ builder.Services.AddDefaultIdentity<BugTrack.Areas.Identity.Data.BugTrackUser>(o
 
 var app = builder.Build();
 //Register Syncfusion license
-Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Mgo+DSMBMAY9C3t2VVhjQlFaclhJXGFWfVJpTGpQdk5xdV9DaVZUTWY/P1ZhSXxRd0VjUX9ZdXNWRmFeUk0=");
+Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("");
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
