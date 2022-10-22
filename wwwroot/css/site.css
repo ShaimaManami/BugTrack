@@ -189,15 +189,34 @@ nav.navbar {
             background-color: #48545f14;
             transform: scale(1.05) translateZ(0px);
         }
-
-nav.navbar {
+navbar-nav {
     margin-left: 290px;
+    
 }
-/*Logo*/
 
+navbar-nav {
+    padding-left: 0px;
+    background-color: #222b33;
+    text-align: center;
+}
+
+    .navbar-nav  li {
+        
+        padding: 10px 20px;
+        
+    }
+
+.navbar-nav  li:hover {
+    background-color: #222b33;
+}
+
+        .navbar-nav li a {
+            color: white;
+            text-decoration: none;
+        }
+/*Logo*/
 .logo-wrapper {
     height: 70px;
-
     display: flex;
     flex-direction: row;
     align-items: center;
